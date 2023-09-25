@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "iostream"
+#include "conio.h"
 using namespace System;
 using namespace std;
 
@@ -160,297 +161,341 @@ void cartas(int x, int y, int carta, int palo)
         Console::SetCursorPosition(x, y + 10); cout << (char)192; for (int i = 1; i <= 11; i++) cout << (char)196; cout << "K";
     }
 }
-int intro() {
-    //titulo
-    int opcion;
-    //cout << "\n**************************************************";
-    cout << "\n\t\t\t\t==================     ==     ";
-    cout << "\n\t\t\t\t              ====    = =     ";
-    cout << "\n\t\t\t\t             ====       =     ";
-    cout << "\n\t\t\t\t           ====         =     ";
-    cout << "\n\t\t\t\t         ====     ============";
-    cout << "\n\t\t\t\t       ====            ===    ";
-    cout << "\n\t\t\t\t     ====            ==   ==  ";
-    cout << "\n\t\t\t\t   ====                 ====  ";
-    cout << "\n\t\t\t\t ====                 ==      ";
-    cout << "\n\t\t\t\t===                  =======  ";
-    //cout << "\n**************************************************";
-    //opciones
-    Console::SetCursorPosition(25, 13); cout<<"1. Jugar";
-    Console::SetCursorPosition(45, 13); cout << "2. Salir del juego";
-    cin >> opcion;
-    return opcion;
-}
 int generador() {
     //srand(time(nullptr));
     return 1 + rand() % (11 + 1 - 1);
 }
-
-void carta_volteada(int x, int y) {
-    Console::SetCursorPosition(x, y); cout <<(char)201; for (int i = 1; i <= 11; i++) cout << (char)205; cout << (char)187;
-    Console::SetCursorPosition(x, y + 1); cout << (char)186; for (int i = 1; i <= 11; i++) cout << (char)178; cout << (char)186;
-    Console::SetCursorPosition(x, y + 2); cout << (char)186; for (int i = 1; i <= 11; i++) cout << (char)178; cout << (char)186;
-    Console::SetCursorPosition(x, y + 3); cout << (char)186; for (int i = 1; i <= 11; i++) cout << (char)178; cout << (char)186;
-    Console::SetCursorPosition(x, y + 4); cout << (char)186; for (int i = 1; i <= 11; i++) cout << (char)178; cout << (char)186;
-    Console::SetCursorPosition(x, y + 5); cout << (char)186; for (int i = 1; i <= 11; i++) cout << (char)178; cout << (char)186;
-    Console::SetCursorPosition(x, y + 6); cout << (char)186; for (int i = 1; i <= 11; i++) cout << (char)178; cout << (char)186;
-    Console::SetCursorPosition(x, y + 7); cout << (char)186; for (int i = 1; i <= 11; i++) cout << (char)178; cout << (char)186;
-    Console::SetCursorPosition(x, y + 8); cout << (char)186; for (int i = 1; i <= 11; i++) cout << (char)178; cout << (char)186;
-    Console::SetCursorPosition(x, y + 9); cout << (char)186; for (int i = 1; i <= 11; i++) cout << (char)178; cout << (char)186;
-    Console::SetCursorPosition(x, y + 10); cout << (char)200; for (int i = 1; i <= 11; i++) cout << (char)205; cout << (char)188;
-}
-
-
-
 void rondas(int x) {
-    Console::Clear();
-    cout << "RONDA: " << x;
-    cout << endl << "--------------------";
+    Console::SetCursorPosition(0, 0); cout << "RONDA: " << x;
+    cout << endl << "----------";
 }
+void intro() {
+    Console::SetCursorPosition(44, 5); cout << "==================      ==     ";
+    Console::SetCursorPosition(44, 6); cout << "              ====     = =     ";
+    Console::SetCursorPosition(44, 7); cout << "             ====        =     ";
+    Console::SetCursorPosition(44, 8); cout << "           ====          =     ";
+    Console::SetCursorPosition(44, 9); cout << "         ====      ============";
+    Console::SetCursorPosition(44, 10); cout << "       ====            ===    ";
+    Console::SetCursorPosition(44, 11); cout << "     ====            ==   ==  ";
+    Console::SetCursorPosition(44, 12); cout << "   ====                 ====  ";
+    Console::SetCursorPosition(44, 13); cout << " ====                 ==      ";
+    Console::SetCursorPosition(44, 14); cout << "===                  =======  ";
+}
+void reglas() {
+    int x;
+    Console::SetCursorPosition(46, 1); cout << "7 y Medio: Reglas del juego";
+    Console::SetCursorPosition(46, 2); cout << "---------------------------";
+    Console::SetCursorPosition(24, 5); cout << "Objetivos del juego: ";
+    Console::SetCursorPosition(24, 6); cout << (char)45 << "Acumular cartas igual o cercano a 7.5";
+    Console::SetCursorPosition(24, 8); cout << "Numero de rondas: ";
+    Console::SetCursorPosition(24, 9); cout << (char)45 << "Minimo 5 y maximo 10 rondas";
+    Console::SetCursorPosition(24, 11); cout << "Desarollo de la partida: ";
+    Console::SetCursorPosition(24, 12); cout << (char)45 << "Si un jugador se pasa de 7.5, el contrario gana la ronda";
+    Console::SetCursorPosition(24, 13); cout << (char)45 << "Si dos jugadores acumulan 7.5 en una ronda, se le sumara una ronda mas";
+    Console::SetCursorPosition(24, 14); cout << (char)45 << "Gana quien tenga mas rondas cercanas o iguales a 7.5";
+    Console::SetCursorPosition(24, 16); cout << "Los valores de las cartas son: ";
+    Console::SetCursorPosition(24, 17); cout << (char)45 << "Cartas numeradas del 1 al 7: Valen su valor dominal";
+    Console::SetCursorPosition(24, 18); cout << (char)45 << "Cartas 8-9: No existen";
+    Console::SetCursorPosition(24, 19); cout << (char)45 << "Cartas 10, J, Q, K: Valen 0.5";
+}
+void creditos() {
+    Console::SetCursorPosition(24, 5); cout << "CREDITOS";
+    Console::SetCursorPosition(24, 6); cout << "---------";
+    Console::SetCursorPosition(24, 9); cout << (char)45 << "Williams Claros Simon        u202312907";
+    Console::SetCursorPosition(24, 11); cout << (char)45 << "Leonardo Acurio              u202312965";
+    Console::SetCursorPosition(24, 13); cout << (char)45 << "Fardy baños Pacheco          u202316221";
+}
+
+void score(int x, int y) {
+    Console::SetCursorPosition(1, 3); cout << "SCORE JUGADOR 1: " << x;
+    Console::SetCursorPosition(101, 3); cout << "SCORE JUGADOR 2: " << y;
+}
+
 
 int main()
 {
+    Console::SetWindowSize(120, 30);
     srand(time(nullptr));
-    //rondas ganadas
-    int score1 = 0;
-    int score2 = 0;
 
-    //partidas ganadas
-    float jugador1 = 0;
-    float jugador2 = 0;
-
-    // valor de cartas en rondas 
-    float value1;
-    int carta=0;
-    float value2;
-    
-    //respuestas
-    char resp;
-
-    //valor de x
+    //valor de x para sus respectivas cartas
     int posic_x1 = 0;
     int posic_x2 = 65;
 
-
-    int num_par;
-    int opcion = intro();
-    int palo;
-    
-    //continuar turno
-    char continuar_turno = 's';
-
     // comparar resultados
+    float jugador_uno_comparar = 0;
+    float jugador_dos_comparar = 0;
 
-    float jugador_uno_comparar =0;
-    float jugador_dos_comparar=0;
+    //cartas y palo
+    int carta, palo;
 
+    //numero de rondas
+    int N;
 
+    //contador de partidas
+    int contador = 1;
+    //rondas ganadas
+    int score1 = 0;
+    int score2 = 0;
+    // valor de cartas en rondas 
+    float value1;
+    float value2;
+    //valor que asume el jugador por ronda
+    float jugador1 = 0;
+    float jugador2 = 0;
+    //continuar turno
+    char continuar_turno;
 
-    int partidas_perfectas1 = 0;
-    int partidas_perfectas2 = 0;
+    //pantalla de inicio
+    int op = 1, y = 0;
+    //para inicializar el juego o terminarlo
+    int opcion;
 
-
-
-
-    //prueba
-    int perdio = 0;
-
+    intro();
+    //ocultar el cursor
+    Console::CursorVisible = false;
+    do {
+        Console::SetCursorPosition(52, 18); cout << "JUGAR" << endl;
+        Console::SetCursorPosition(52, 20); cout << "SALIR DEL JUEGO" << endl;
+        Console::SetCursorPosition(52, 27); cout << "PRESIONA ENTER" << endl;
+        //lo que senala 
+        Console::SetCursorPosition(50, 18 + y); cout << (char)16 << endl;
+        switch (getch())
+        {
+            //flecha arriba
+        case 72:
+            Console::SetCursorPosition(50, 18 + y); cout << " " << endl;
+            y -= 2;
+            if (y < 0) {
+                y = 0;
+            }
+            break;
+            //flecha abajo
+        case 80:
+            Console::SetCursorPosition(50, 18 + y); cout << " " << endl;
+            y += 2;
+            if (y > 2) {
+                y = 2;
+            }
+            break;
+            //enter
+        case 13:
+            switch (y) {
+            case 0:
+                opcion = 1;
+                op = 0;
+                break;
+            case 2:
+                opcion = 2;
+                op = 0;
+                break;
+            }
+        default:
+            break;
+        }
+    } while (op != 0);
 
     switch (opcion)
     {
-        case 1: 
+    case 1:
+        do {
             Console::Clear();
-            do {
-                Console::Clear();
-                cout << "Cuantas partidas quieres jugar?"; cin >> num_par;
-                if (num_par < 5 || num_par > 10) {
-                    cout << "El numero ingresado no cumple con los requisitos." <<endl;
-                    _sleep(1000);
+            Console::CursorVisible = true;
+            reglas();
+            Console::SetCursorPosition(44, 27); cout << "Cuantas partidas quieres jugar? "; cin >> N;
+            if (N < 5 || N > 10) {
+                cout << endl << "El numero ingresado no cumple con los requisitos....";
+                _sleep(1000);
+            }
+            Console::Clear();
+        } while (N < 5 || N > 10);
+
+        while (contador <= N) {
+            //visualizar el numero de ronda
+            rondas(contador);
+
+            continuar_turno = 's';
+            while (continuar_turno == 's' || continuar_turno == 'S') {
+                score(score1, score2);
+                Console::SetCursorPosition(50, 3); cout << "TURNO DEL JUGADOR 1";
+                carta = generador();
+                if (carta == 8 || carta == 9 || carta == 10 || carta == 11) {
+                    value1 = 0.5;
                 }
-            } while (num_par < 5 || num_par > 10);
-            
-           
-            while(num_par != 0) {
-                    //visualizar el numero de ronda
-                    rondas(num_par);
+                else {
+                    value1 = carta;
+                }
+                palo = 3 + rand() % (6 + 1 - 3);
+                cartas(posic_x1, 10, carta, palo);
+                jugador1 += value1;
 
-                    while (continuar_turno == 's' || continuar_turno == 'S') {
-                        
-                        Console::SetCursorPosition(0, 3); cout << "SCORE JUGADOR 1: " << score1;
-                        Console::SetCursorPosition(90, 3); cout << "SCORE JUGADOR 2: " << score2;
-                        Console::SetCursorPosition(45, 3); cout << "TURNO DEL JUGADOR 1";
-                      
-                        carta = generador();
-                        if (carta == 8 || carta == 9 || carta == 10 || carta == 11) {
-                            value1 = 0.5;
-                        }
-                        else { 
-                            value1 = carta; 
-                        }
+                if (jugador1 > 7.5) {
+                    _sleep(2000);
+                    Console::Clear();
+                    Console::SetCursorPosition(55, 14); cout << "TE PASASTE";
+                    Console::SetCursorPosition(50, 15); cout << "TURNO DEL JUGADOR 2";
+                    _sleep(1500);
+                    Console::Clear();
+                    jugador_uno_comparar = 7.5;
+                    break;
+                }
 
-
-
-                        palo = 3 + rand() % (6 + 1 - 3);
-                        cartas(posic_x1, 10, carta, palo);
-                        jugador1 += value1;
-
-                           
-                        if (jugador1 > 7.5) {
-                            _sleep(2000);
-                            Console::Clear();
-                            Console::SetCursorPosition(50, 15); cout << "TURNO DEL JUGADOR 2";
-                            _sleep(1000);
-                            Console::Clear();
-                            break;
-                        }
-
-                        if (jugador1 == 7.5) {
-                            partidas_perfectas1++;
-                            _sleep(2000);
-                            Console::Clear();
-                            Console::SetCursorPosition(50, 15); cout << " PARTIDA PERFECTA";
-                            Console::SetCursorPosition(50, 16); cout << "TURNO DEL JUGADOR 2";
-                            _sleep(1000);
-                            Console::Clear();
-                            break;
-                        }
-
-                        Console::SetCursorPosition(0, 23);
-                        cout << "                                 ";
-                        Console::SetCursorPosition(0, 23);
-                        cout << "VALOR ACTUAL: " << jugador1;
-                     
-
-                        Console::SetCursorPosition(0, 25);
-                        cout << "                                 ";
-                        Console::SetCursorPosition(0, 25);
-                        cout <<"Quieres seguir? [S]si [N]no "; cin >> continuar_turno;
-                        if (continuar_turno=='s'||continuar_turno=='S') {
-                            posic_x1 += 10;
-                            continue;
-                        }
-                        if (continuar_turno == 'n' || continuar_turno == 'N') {
-                            jugador_uno_comparar = 7.5 - jugador1;
-                            break;
-                        }
-                    }
-                    
-                    continuar_turno = 's';
-                    posic_x1 = 0;
-
-
-                    while (continuar_turno == 's' || continuar_turno == 'S') {
-                        
-                        Console::SetCursorPosition(0, 3); cout << "SCORE JUGADOR 1: " << score1;
-                        Console::SetCursorPosition(90, 3); cout << "SCORE JUGADOR 2: " << score2;
-                        Console::SetCursorPosition(45, 3); cout << "TURNO DEL JUGADOR 2";
-
-                        carta = generador();
-                        if (carta == 8 || carta == 9 || carta == 10 || carta == 11) {
-                            value2 = 0.5;
-                        }
-                        else {
-                            value2 = carta;
-                        }
-
-
-
-                        palo = 3 + rand() % (6 + 1 - 3);
-                        cartas(posic_x2, 10, carta, palo);
-                        jugador2 += value2;
-
-
-                        if (jugador2 > 7.5) {
-                            _sleep(2000);
-                            Console::Clear();
-                            Console::SetCursorPosition(50, 15); cout << "TURNO DEL JUGADOR 1";
-                            _sleep(1000);
-                            Console::Clear();
-                            break;
-                        }
-
-                        if (jugador2 == 7.5) {
-                            partidas_perfectas2++;
-                            _sleep(2000);
-                            Console::Clear();
-                            Console::SetCursorPosition(50, 15); cout << " PARTIDA PERFECTA";
-                            Console::SetCursorPosition(50, 16); cout << "TURNO DEL JUGADOR 2";
-                            _sleep(1000);
-                            Console::Clear();
-                            break;
-                        }
-
-                        Console::SetCursorPosition(65, 23);
-                        cout << "                                 ";
-                        Console::SetCursorPosition(65, 23);
-                        cout << "VALOR ACTUAL: " << jugador2;
-
-                        //borrar ocultar la pregunta de si quiere seguir en el jugador 1
-                        Console::SetCursorPosition(0, 25);
-                        cout << "                                 ";
-                        Console::SetCursorPosition(65, 25);
-                        cout << "                                 ";
-                        Console::SetCursorPosition(65, 25);
-                        cout << "Quieres seguir? [S]si [N]no "; cin >> continuar_turno;
-                        if (continuar_turno == 's' || continuar_turno == 'S') {
-                            posic_x2 += 10;
-                            continue;
-                        }
-                        if (continuar_turno == 'n' || continuar_turno == 'N') {
-                            jugador_dos_comparar = 7.5 - jugador2;
-                            break;
-                        }
-                    }
-                    continuar_turno = 's';
-                    posic_x2 = 65;
-
-                    if (jugador_uno_comparar < jugador_dos_comparar) {
-                        score1++;
-                        Console::Clear();
-                        Console::SetCursorPosition(50, 15); cout << "Jugador 1 GANO";
-                        _sleep(1000);
-                    }
-                    if(jugador_uno_comparar > jugador_dos_comparar) {
-                        score2++;
-                        Console::Clear();
-                        Console::SetCursorPosition(50, 15); cout << "Jugador 2 GANO";
-                        _sleep(1000);
-                    }
-                    //partidas perfectas => son aquellas donde el jugador alcanza 7.5 en el valor de sus cartas
-                    // si son iguales las partidas perfectas
-                    if (partidas_perfectas1 > partidas_perfectas2 ) {
-                        score1++;
-                        Console::Clear();
-                        Console::SetCursorPosition(50, 15); cout << "Jugador 1 GANO";
-                        _sleep(1000);
-                    }
-                    if (partidas_perfectas1 < partidas_perfectas2) {
-                        score2++;
-                        Console::Clear();
-                        Console::SetCursorPosition(50, 15); cout << "Jugador 1 GANO";
-                        _sleep(1000);
-                    }
-                    //igualamos a cero para la proxima ronda
-                    partidas_perfectas1 = 0;
-                    partidas_perfectas2 = 0;
+                if (jugador1 == 7.5) {
                     jugador_uno_comparar = 0;
-                    jugador_dos_comparar = 0;
-                    //igualamos los valores actuales de las cartas
-                    jugador1 = 0;
-                    jugador2 = 0;
-                    value1 = 0;
-                    value2 = 0;
-                    //reducimos en 1 para que pueda terminar el ciclo
-                    num_par--;
+                    _sleep(2000);
+                    Console::CursorVisible = false;
+                    Console::Clear();
+                    Console::SetCursorPosition(52, 14); cout << "PARTIDA PERFECTA";
+                    Console::SetCursorPosition(50, 15); cout << "TURNO DEL JUGADOR 2";
+                    _sleep(1500);
+                    Console::Clear();
+                    break;
+                }
+
+                Console::SetCursorPosition(0, 23);
+                cout << "                                 ";
+                Console::SetCursorPosition(0, 23);
+                cout << "VALOR ACTUAL: " << jugador1;
+
+
+                Console::SetCursorPosition(0, 25);
+                cout << "                                 ";
+                Console::SetCursorPosition(0, 25);
+
+                cout << "Quieres seguir? [S]si [N]no "; cin >> continuar_turno;
+                if (continuar_turno == 's' || continuar_turno == 'S') {
+                    posic_x1 += 7;
+                    continue;
+                }
+                if (continuar_turno == 'n' || continuar_turno == 'N') {
+                    jugador_uno_comparar = 7.5 - jugador1;
+                    break;
+                }
             }
 
-          
+            continuar_turno = 's';
+
+            rondas(contador);
+
+            while (continuar_turno == 's' || continuar_turno == 'S') {
+                score(score1, score2);
+                Console::SetCursorPosition(50, 3); cout << "TURNO DEL JUGADOR 2";
+
+                carta = generador();
+                if (carta == 8 || carta == 9 || carta == 10 || carta == 11) {
+                    value2 = 0.5;
+                }
+                else {
+                    value2 = carta;
+                }
+
+                palo = 3 + rand() % (6 + 1 - 3);
+                cartas(posic_x2, 10, carta, palo);
+                jugador2 += value2;
 
 
-        case 2: 
-            Console::Clear();
-            cout << "Termino el juego";
-            break;
+                if (jugador2 > 7.5) {
+                    jugador_dos_comparar = 7.5;
+                    _sleep(2000);
+                    Console::Clear();
+                    Console::SetCursorPosition(55, 14); cout << "TE PASASTE";
+                    _sleep(1500);
+                    Console::Clear();
+                    break;
+                }
 
+                if (jugador2 == 7.5) {
+                    jugador_dos_comparar = 0;
+                    _sleep(2000);
+                    Console::Clear();
+                    Console::SetCursorPosition(52, 14); cout << "PARTIDA PERFECTA";
+                    _sleep(1500);
+                    Console::Clear();
+                    break;
+                }
+
+                Console::SetCursorPosition(65, 23);
+                cout << "                                 ";
+                Console::SetCursorPosition(65, 23);
+                cout << "VALOR ACTUAL: " << jugador2;
+
+                // ocultar la pregunta de si quiere seguir en el jugador 1
+                Console::SetCursorPosition(0, 25);
+                cout << "                                 ";
+                Console::SetCursorPosition(65, 25);
+                cout << "                                 ";
+                Console::SetCursorPosition(65, 25);
+                cout << "Quieres seguir? [S]si [N]no "; cin >> continuar_turno;
+                if (continuar_turno == 's' || continuar_turno == 'S') {
+                    posic_x2 += 7;
+                    continue;
+                }
+                if (continuar_turno == 'n' || continuar_turno == 'N') {
+                    jugador_dos_comparar = 7.5 - jugador2;
+                    break;
+                }
+            }
+
+            if (jugador_uno_comparar < jugador_dos_comparar) {
+                score1++;
+                Console::Clear();
+                Console::SetCursorPosition(53, 15); cout << "JUGADOR 1 GANO";
+                _sleep(1000);
+                Console::Clear();
+            }
+
+            if (jugador_uno_comparar > jugador_dos_comparar) {
+                score2++;
+                Console::Clear();
+                Console::SetCursorPosition(53, 15); cout << "JUGADOR 2 GANO";
+                _sleep(1000);
+                Console::Clear();
+
+            }
+
+            if (jugador_uno_comparar == jugador_dos_comparar) {
+                contador--;
+                Console::CursorVisible = false;
+                Console::Clear();
+                Console::SetCursorPosition(56, 14); cout << "EMPATES";
+                Console::SetCursorPosition(48, 15); cout << "SE LES SUMARA UNA RONDA";
+                _sleep(1000);
+                Console::Clear();
+            }
+
+            //reiniciar coordena 'x' 
+            posic_x1 = 0;
+            posic_x2 = 65;
+            //para siguiente turno
+            continuar_turno = 's';
+
+            jugador_uno_comparar = 0;
+            jugador_dos_comparar = 0;
+            jugador1 = 0;
+            jugador2 = 0;
+            value1 = 0;
+            value2 = 0;
+            //aumentar el valor del contador
+            contador++;
+        }
+
+        if (score1 > score2) {
+            Console::SetCursorPosition(50, 14); cout << "GANADOR: JUGADOR 1";
+            system("pause>0");
+
+        }
+        else {
+            Console::SetCursorPosition(50, 14); cout << "GANADRO: JUGADOR 2";
+            system("pause>0");
+        }
+        break;
+
+    case 2:
+        Console::Clear();
+        creditos();
+        system("pause>0");
+        break;
+
+    default:
+        break;
     }
 }
